@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        header {
+            background-color: #1c1c1c;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+            header h1 {
+                margin: 0;
+                font-size: 1.5rem;
+                margin-left: 1rem;
+            }
+
+            header a {
+                color: #e4c442;
+                text-decoration: none;
+            }
+
+        nav {
+            display: flex;
+            gap: 5rem;
+            margin-right: 6rem;
+        }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+                position: relative;
+                display: inline-block;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }
+
+                nav a::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 2px;
+                    display: block;
+                    background: #e4c442;
+                    transition: width 0.3s ease;
+                    bottom: -5px;
+                    left: 0;
+                }
+
+                nav a:hover {
+                    color: #e4c442;
+                    transform: translateY(-3px);
+                }
+
+                    nav a:hover::after {
+                        width: 100%;
+                    }
+
+        html, body {
+            overflow: auto;
+        }
+
+        .portfolio-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            height: calc(56vh - 5rem);
+            padding-top: 5rem;
+            margin-top: 1rem;
+            box-sizing: border-box;
+        }
+
+        .portfolio-container2 {
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            height: calc(49vh - 5rem);
+            padding-top: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        .portfolio-container3 {
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            height: calc(100vh - 5rem);
+            padding-top: 5rem;
+            margin-top: 1rem;
+            box-sizing: border-box;
+        }
+
+        .portfolio {
+            display: flex;
+            width: calc(300px * 41 + 2rem * 41);
+            animation: scrollPortfolio 360s linear infinite;
+        }
+
+        .portfolio2 {
+            display: flex;
+            width: calc(300px * 41 + 2rem * 41);
+            animation: scrollPortfolio2 560s linear infinite;
+        }
+
+        .portfolio3 {
+            display: flex;
+            width: calc(300px * 41 + 2rem * 41);
+            animation: scrollPortfolio 360s linear infinite;
+        }
+
+        .portfolio-item {
+            flex: none;
+            width: 370px;
+            height: auto;
+            margin-left: 44px;
+            margin-right: 0;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 5px solid white;
+        }
+
+            .portfolio-item img {
+                width: 100%;
+                height: 1000px;
+                object-fit: cover;
+            }
+
+            .portfolio-item:hover {
+                transform: scale(1.05);
+            }
+
+            .portfolio-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            .portfolio-item h4 {
+                margin: 0;
+                padding: 1rem;
+                background-color: #1c1c1c;
+                color: #fff;
+                text-align: center;
+            }
+
+        .about, .contact {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: transparent;
+            box-shadow: none;
+            color: #fff;
+            text-align: left;
+        }
+
+        .big-text-container {
+            position: absolute;
+            left: 2.5rem;
+            top: 870%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            color: white;
+            font-size: 2rem;
+            max-width: 650px;
+            text-align: left;
+            padding: 0;
+        }
+
+            .big-text-container h2 {
+                margin: 0;
+                font-size: 1.5rem;
+                color: white;
+            }
+
+        footer {
+            background-color: transparent;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .social-icon {
+            transition: transform 0.2s ease-in-out;
+            margin-top: 1rem;
+            margin-right: 2rem;
+            margin-bottom: 5rem;
+        }
+
+            .social-icon:hover {
+                transform: scale(1.2);
+            }
+
+        .fb {
+            height: 60px;
+            width: 60px;
+            z-index: 10000;
+            font-size: 0%;
+            text-decoration: none;
+        }
+
+        .ig {
+            height: 60px;
+            width: 60px;
+            z-index: 10000;
+            font-size: 0%;
+            text-decoration: none;
+        }
+
+        .x {
+            height: 64px;
+            width: 60px;
+            z-index: 10000;
+            font-size: 0%;
+            text-decoration: none;
+        }
+
+        .gh {
+            height: 62px;
+            width: 62px;
+            z-index: 10000;
+            font-size: 0%;
+            text-decoration: none;
+            border-radius: 25%;
+        }
+
+        .custom-image {
+            width: 64%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-top: 3%;
+        }
+
+        .photog {
+            font-size: 70px;
+            text-align: center;
+            padding: 18%;
+        }
+
+        @keyframes scrollPortfolio {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes scrollPortfolio2 {
+            0% {
+                transform: translateX(-142%);
+            }
+
+            100% {
+                transform: translateX(-100);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html" target="_self">saidosnueve</a></h1>
+        <nav>
+            <a href="index.html" target="_self">Home</a>
+            <a href="about.html" target="_self">About</a>
+            <a href="projects.html" target="_self">Projects</a>
+            <a href="contact.html" target="_self">Contact</a>
+        </nav>
+    </header>
+
+    <p class="photog">PHOTOGRAPHY</p>
+
+    <section id="portfolio" class="portfolio-container">
+        <div class="portfolio">
+            <div class="portfolio-item">
+                <a href="1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="1.png" alt="Photo 1">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="2.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="2.png" alt="Photo 2">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="3.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="3.png" alt="Photo 3">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="4.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="4.png" alt="Photo 4">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="5.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="5.png" alt="Photo 5">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="6.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="6.png" alt="Photo 6">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="7.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="7.png" alt="Photo 7">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="8.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="8.png" alt="Photo 8">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="9.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="9.png" alt="Photo 9">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="10.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="10.png" alt="Photo 10">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="11.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="11.png" alt="Photo 11">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="12.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="12.png" alt="Photo 12">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="13.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="13.png" alt="Photo 13">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="14.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="14.png" alt="Photo 14">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="15.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="15.png" alt="Photo 15">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="1.png" alt="Photo 1">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="2.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="2.png" alt="Photo 2">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="3.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="3.png" alt="Photo 3">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="4.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="4.png" alt="Photo 4">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="5.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="5.png" alt="Photo 5">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="6.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="6.png" alt="Photo 6">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="7.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="7.png" alt="Photo 7">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="8.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="8.png" alt="Photo 8">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="9.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="9.png" alt="Photo 9">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="10.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="10.png" alt="Photo 10">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="11.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="11.png" alt="Photo 11">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="12.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="12.png" alt="Photo 12">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="13.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="13.png" alt="Photo 13">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="14.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="14.png" alt="Photo 14">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="15.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="15.png" alt="Photo 15">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="1.png" alt="Photo 1">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="2.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="2.png" alt="Photo 2">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="3.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="3.png" alt="Photo 3">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="4.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="4.png" alt="Photo 4">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="5.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="5.png" alt="Photo 5">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="6.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="6.png" alt="Photo 6">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="7.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="7.png" alt="Photo 7">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="8.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="8.png" alt="Photo 8">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="9.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="9.png" alt="Photo 9">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="10.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="10.png" alt="Photo 10">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="11.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="11.png" alt="Photo 11">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="12.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="12.png" alt="Photo 12">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="13.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="13.png" alt="Photo 13">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="14.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="14.png" alt="Photo 14">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="15.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="15.png" alt="Photo 15">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio2" class="portfolio-container2">
+        <div class="portfolio2">
+            <div class="portfolio-item">
+                <a href="40.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="40.png" alt="Photo 40">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="39.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="39.png" alt="Photo 39">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="38.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="38.png" alt="Photo 38">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="37.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="37.png" alt="Photo 37">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="36.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="36.png" alt="Photo 36">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="35.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="35.png" alt="Photo 35">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="34.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="34.png" alt="Photo 34">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="33.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="33.png" alt="Photo 33">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="32.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="32.png" alt="Photo 32">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="31.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="31.png" alt="Photo 31">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="30.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="30.png" alt="Photo 30">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="29.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="29.png" alt="Photo 29">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="28.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="28.png" alt="Photo 28">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="27.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="27.png" alt="Photo 27">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="26.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="26.png" alt="Photo 26">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="25.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="25.png" alt="Photo 25">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="24.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="24.png" alt="Photo 24">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="23.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="23.png" alt="Photo 23">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="22.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="22.png" alt="Photo 22">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="21.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="21.png" alt="Photo 21">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="20.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="20.png" alt="Photo 20">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="19.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="19.png" alt="Photo 19">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="18.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="18.png" alt="Photo 18">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="17.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="17.png" alt="Photo 17">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="16.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="16.png" alt="Photo 16">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="40.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="40.png" alt="Photo 40">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="39.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="39.png" alt="Photo 39">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="38.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="38.png" alt="Photo 38">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="37.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="37.png" alt="Photo 37">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="36.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="36.png" alt="Photo 36">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="35.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="35.png" alt="Photo 35">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="34.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="34.png" alt="Photo 34">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="33.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="33.png" alt="Photo 33">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="32.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="32.png" alt="Photo 32">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="31.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="31.png" alt="Photo 31">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="30.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="30.png" alt="Photo 30">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="29.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="29.png" alt="Photo 29">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="28.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="28.png" alt="Photo 28">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="27.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="27.png" alt="Photo 27">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="26.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="26.png" alt="Photo 26">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="25.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="25.png" alt="Photo 25">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="24.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="24.png" alt="Photo 24">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="23.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="23.png" alt="Photo 23">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="22.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="22.png" alt="Photo 22">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="21.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="21.png" alt="Photo 21">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="20.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="20.png" alt="Photo 20">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="19.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="19.png" alt="Photo 19">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="18.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="18.png" alt="Photo 18">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="17.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="17.png" alt="Photo 17">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="16.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="16.png" alt="Photo 16">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="40.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="40.png" alt="Photo 40">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="39.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="39.png" alt="Photo 39">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="38.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="38.png" alt="Photo 38">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="37.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="37.png" alt="Photo 37">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="36.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="36.png" alt="Photo 36">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="35.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="35.png" alt="Photo 35">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="34.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="34.png" alt="Photo 34">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="33.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="33.png" alt="Photo 33">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="32.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="32.png" alt="Photo 32">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="31.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="31.png" alt="Photo 31">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="30.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="30.png" alt="Photo 30">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="29.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="29.png" alt="Photo 29">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="28.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="28.png" alt="Photo 28">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="27.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="27.png" alt="Photo 27">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="26.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="26.png" alt="Photo 26">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="25.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="25.png" alt="Photo 25">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="24.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="24.png" alt="Photo 24">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="23.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="23.png" alt="Photo 23">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="22.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="22.png" alt="Photo 22">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="21.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="21.png" alt="Photo 21">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="20.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="20.png" alt="Photo 20">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="19.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="19.png" alt="Photo 19">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="18.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="18.png" alt="Photo 18">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="17.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="17.png" alt="Photo 17">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="16.png" data-lightbox="portfolio2" data-title="a love to remember—to whatever end;">
+                    <img src="16.png" alt="Photo 16">
+                </a>
+                <h4>a love to remember—to whatever end;</h4>
+            </div>
+        </div>
+    </section>
+
+    <p class="photog">MUSIC</p>
+
+    <section id="portfolio3" class="portfolio-container3">
+        <div class="portfolio3">
+            <div class="portfolio-item">
+                <a href="m1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="m1.png" alt="Photo 1">
+                </a>
+                <h4>my little summer</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m2.png" data-lightbox="portfolio" data-title="another beautiful moment;">
+                    <img src="m2.png" alt="Photo 2">
+                </a>
+                <h4>to be loved is to be known</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m3.png" data-lightbox="portfolio" data-title="a fleeting glimpse of beauty;">
+                    <img src="m3.png" alt="Photo 3">
+                </a>
+                <h4>to you my darling</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m4.png" data-lightbox="portfolio" data-title="memories of a distant past;">
+                    <img src="m4.png" alt="Photo 4">
+                </a>
+                <h4>season</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m5.png" data-lightbox="portfolio" data-title="a story left untold;">
+                    <img src="m5.png" alt="Photo 5">
+                </a>
+                <h4>together or nothing, nothing together</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="m1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="m1.png" alt="Photo 1">
+                </a>
+                <h4>my little summer</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m2.png" data-lightbox="portfolio" data-title="another beautiful moment;">
+                    <img src="m2.png" alt="Photo 2">
+                </a>
+                <h4>to be loved is to be known</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m3.png" data-lightbox="portfolio" data-title="a fleeting glimpse of beauty;">
+                    <img src="m3.png" alt="Photo 3">
+                </a>
+                <h4>to you my darling</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m4.png" data-lightbox="portfolio" data-title="memories of a distant past;">
+                    <img src="m4.png" alt="Photo 4">
+                </a>
+                <h4>season</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m5.png" data-lightbox="portfolio" data-title="a story left untold;">
+                    <img src="m5.png" alt="Photo 5">
+                </a>
+                <h4>together or nothing, nothing together</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="m1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="m1.png" alt="Photo 1">
+                </a>
+                <h4>my little summer</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m2.png" data-lightbox="portfolio" data-title="another beautiful moment;">
+                    <img src="m2.png" alt="Photo 2">
+                </a>
+                <h4>to be loved is to be known</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m3.png" data-lightbox="portfolio" data-title="a fleeting glimpse of beauty;">
+                    <img src="m3.png" alt="Photo 3">
+                </a>
+                <h4>to you my darling</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m4.png" data-lightbox="portfolio" data-title="memories of a distant past;">
+                    <img src="m4.png" alt="Photo 4">
+                </a>
+                <h4>season</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m5.png" data-lightbox="portfolio" data-title="a story left untold;">
+                    <img src="m5.png" alt="Photo 5">
+                </a>
+                <h4>together or nothing, nothing together</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="m1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="m1.png" alt="Photo 1">
+                </a>
+                <h4>my little summer</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m2.png" data-lightbox="portfolio" data-title="another beautiful moment;">
+                    <img src="m2.png" alt="Photo 2">
+                </a>
+                <h4>to be loved is to be known</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m3.png" data-lightbox="portfolio" data-title="a fleeting glimpse of beauty;">
+                    <img src="m3.png" alt="Photo 3">
+                </a>
+                <h4>to you my darling</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m4.png" data-lightbox="portfolio" data-title="memories of a distant past;">
+                    <img src="m4.png" alt="Photo 4">
+                </a>
+                <h4>season</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m5.png" data-lightbox="portfolio" data-title="a story left untold;">
+                    <img src="m5.png" alt="Photo 5">
+                </a>
+                <h4>together or nothing, nothing together</h4>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="m1.png" data-lightbox="portfolio" data-title="a love to remember—to whatever end;">
+                    <img src="m1.png" alt="Photo 1">
+                </a>
+                <h4>my little summer</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m2.png" data-lightbox="portfolio" data-title="another beautiful moment;">
+                    <img src="m2.png" alt="Photo 2">
+                </a>
+                <h4>to be loved is to be known</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m3.png" data-lightbox="portfolio" data-title="a fleeting glimpse of beauty;">
+                    <img src="m3.png" alt="Photo 3">
+                </a>
+                <h4>to you my darling</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m4.png" data-lightbox="portfolio" data-title="memories of a distant past;">
+                    <img src="m4.png" alt="Photo 4">
+                </a>
+                <h4>season</h4>
+            </div>
+            <div class="portfolio-item">
+                <a href="m5.png" data-lightbox="portfolio" data-title="a story left untold;">
+                    <img src="m5.png" alt="Photo 5">
+                </a>
+                <h4>together or nothing, nothing together</h4>
+            </div>
+        </div>
+    </section>
+
+    <p class="photog">POETRY</p>
+
+    <img src="p1.png" alt="Description" class="custom-image">
+    <img src="p2.png" alt="Description" class="custom-image">
+    <img src="p3.png" alt="Description" class="custom-image">
+
+    <div class="big-text-container">
+        <p style="font-size: 55px; color: white; margin: 0; padding: 0; "><b>Hello! I am</b></p>
+        <p style="font-size: 55px; color: #e4c442; margin: 0; padding: 0"><b>Kim Monteagudo-Cali,</b></p>
+        <p style="font-size: 20px; color: white; margin: 0; "> and I would love to share my experience with you!</p><br>
+        <a href="https://www.facebook.com/kimmonteagudo.cali" style="text-decoration: none;" target="_blank">
+            <img src="fb.png" class="social-icon fb">
+        </a>
+
+        <a href="https://www.instagram.com/kim.monteagudo/" style="text-decoration: none;" target="_blank">
+            <img src="ig.png" class="social-icon ig">
+        </a>
+
+        <a href="https://twitter.com/mkimcali" style="text-decoration: none;" target="_blank">
+            <img src="x.png" class="social-icon x">
+        </a>
+
+        <a href="https://github.com/xoxokym" style="text-decoration: none;" target="_blank">
+            <img src="gh.png" class="social-icon gh">
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Kim Monteagudo-Cali's Photography</p>
+    </footer>
+
+    <div id="particles-js"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 70,
+                    "density": {
+                        "enable": true,
+                        "value_area": 700
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 1,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 50,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.9,
+                    "width": 2
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 200,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            function handleFadeOutTransition(event) {
+                event.preventDefault();
+                document.body.classList.add('fade-out');
+
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 500);
+            }
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', handleFadeOutTransition);
+            });
+
+            const headerLink = document.querySelector('header h1 a');
+            headerLink.addEventListener('click', handleFadeOutTransition);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+Instructions:
+
+1. Download the folder named "saidosnueve.zip"
+2. After downloading it, right click on the said folder to extract it.
+3. Click "Extract All" to extract.
+4. Open the extracted folder.
+5. Look for "index" or "index.html" and click on it to open the portfolio.
