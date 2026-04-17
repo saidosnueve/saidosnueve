@@ -60,7 +60,6 @@ header {
             text-decoration: none;
             position: relative;
             transition: .3s;
-            white-space: nowrap;
         }
 
             header h1 a::after {
@@ -159,13 +158,11 @@ nav {
 
 .name {
     color: #e4c442;
-    white-space: nowrap;
 }
 
 .desc {
     font-size: clamp(1.1rem, 3vw, 1.6rem);
     margin-top: .8rem;
-    white-space: nowrap;
 }
 
 /* =====================================================
