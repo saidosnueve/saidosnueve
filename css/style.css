@@ -1,0 +1,237 @@
+﻿/* =====================================================
+   RESET / GLOBAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =====================================================
+   BODY / BASE
+===================================================== */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    transition: opacity .4s ease;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* =====================================================
+   BACKGROUND EFFECTS
+===================================================== */
+
+#particles-js {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    z-index: 1000;
+}
+
+    header h1 {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+
+        /* Logo */
+        header h1 a {
+            color: #e4c442;
+            text-decoration: none;
+            position: relative;
+            transition: .3s;
+            white-space: nowrap;
+        }
+
+            header h1 a::after {
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #e4c442;
+                transition: .3s;
+            }
+
+            header h1 a:hover {
+                transform: translateY(-3px);
+            }
+
+                header h1 a:hover::after {
+                    width: 100%;
+                }
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        position: relative;
+        transition: .3s;
+    }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e4c442;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #e4c442;
+            transform: translateY(-3px);
+        }
+
+            nav a:hover::after {
+                width: 100%;
+            }
+
+/* =====================================================
+   HAMBURGER
+===================================================== */
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1100;
+    transition: transform .35s ease;
+}
+
+    .hamburger.open {
+        transform: rotate(90deg);
+    }
+
+/* =====================================================
+   INTRO / HERO SECTION
+===================================================== */
+
+.big-text-container {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    max-width: 900px;
+}
+
+    .big-text-container p {
+        margin: .3rem 0;
+    }
+
+.hello,
+.name {
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    line-height: 1.1;
+}
+
+.name {
+    color: #e4c442;
+    white-space: nowrap;
+}
+
+.desc {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    margin-top: .8rem;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   SOCIAL ICONS
+===================================================== */
+
+.social-icons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 3rem;
+}
+
+.social-icon {
+    width: clamp(45px, 7vw, 65px);
+    border-radius: 12px;
+    transition: .25s ease;
+}
+
+    .social-icon:hover {
+        transform: scale(1.15);
+    }
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        transform: translateX(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .45s cubic-bezier(.77,0,.18,1), opacity .45s cubic-bezier(.77,0,.18,1);
+    }
+
+        nav.active {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+    .big-text-container {
+        left: 8%;
+        top: 55%;
+    }
+}
