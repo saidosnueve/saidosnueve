@@ -177,7 +177,6 @@ nav {
 
 .social-icon {
     width: clamp(45px, 7vw, 65px);
-    border-radius: 12px;
     transition: .25s ease;
 }
 
