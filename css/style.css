@@ -158,6 +158,7 @@ nav {
 
 .name {
     color: #e4c442;
+    white-space: nowrap;
 }
 
 .desc {
