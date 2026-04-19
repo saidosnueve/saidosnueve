@@ -99,6 +99,8 @@ footer {
     text-align: center;
 }
 
+/* MAIN CONTENT*/
+
 /* HERO */
 
 .hero {
@@ -179,6 +181,8 @@ nav {
             nav a:hover::after {
                 width: 100%;
             }
+
+/* DISPLAY MODE */
 
 /* RESPONSIVENESS */
 

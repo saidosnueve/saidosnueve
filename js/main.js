@@ -1,6 +1,4 @@
-/* =====================================================
-  PARTICLES BACKGROUND
-===================================================== */
+/* NODES */
 
 particlesJS('particles-js', {
     particles: {
@@ -38,18 +36,10 @@ particlesJS('particles-js', {
     retina_detect: true
 });
 
-
-/* =====================================================
-   DOM ELEMENTS
-===================================================== */
+/* HAMBURGER */
 
 const hamburger = document.getElementById("hamburger");
 const nav = document.querySelector("nav");
-
-
-/* =====================================================
-   HAMBURGER MENU
-===================================================== */
 
 if (hamburger && nav) {
     hamburger.addEventListener("click", () => {
@@ -58,11 +48,6 @@ if (hamburger && nav) {
         hamburger.textContent = nav.classList.contains("active") ? "✕" : "☰";
     });
 }
-
-
-/* =====================================================
-   CLOSE MENU ON LINK CLICK + PAGE FADE
-===================================================== */
 
 document.querySelectorAll("nav a, header h1 a").forEach(link => {
     link.addEventListener("click", function (e) {
@@ -82,10 +67,7 @@ document.querySelectorAll("nav a, header h1 a").forEach(link => {
     });
 });
 
-
-/* =====================================================
-   RESPONSIVE RESET
-===================================================== */
+/* RESPONSIVENESS */
 
 window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
