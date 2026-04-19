@@ -115,7 +115,7 @@ footer {
 
 .hello,
 .name {
-    font-size: clamp(1.6rem, 5vw, 4rem);
+    font-size: clamp(1.7rem, 5vw, 4rem);
     line-height: 1.1;
 }
 
@@ -124,7 +124,7 @@ footer {
 }
 
 .desc {
-    font-size: clamp(0.7rem, 3vw, 1.6rem);
+    font-size: clamp(0.8rem, 3vw, 1.6rem);
     margin-top: .8rem;
 }
 
@@ -137,7 +137,7 @@ footer {
 }
 
 .social-icon {
-    width: clamp(25px, 7vw, 55px);
+    width: clamp(30px, 7vw, 55px);
     transition: .25s ease;
 }
 
