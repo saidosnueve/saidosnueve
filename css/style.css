@@ -161,7 +161,7 @@ nav {
 }
 
 .desc {
-    font-size: clamp(0.9rem, 3vw, 1.6rem);
+    font-size: clamp(0.6rem, 3vw, 1.6rem);
     margin-top: .8rem;
 }
 
@@ -172,11 +172,11 @@ nav {
 .social-icons {
     margin-top: 2rem;
     display: flex;
-    gap: 3rem;
+    gap: clamp(0.8rem, 3vw, 3rem);
 }
 
 .social-icon {
-    width: clamp(35px, 7vw, 55px);
+    width: clamp(25px, 7vw, 55px);
     transition: .25s ease;
 }
 
