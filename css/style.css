@@ -158,6 +158,7 @@ nav {
 
 .name {
     color: #e4c442;
+    max-width: 100%;
     white-space: nowrap;
 }
 
