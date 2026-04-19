@@ -161,7 +161,7 @@ nav {
 }
 
 .desc {
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    font-size: clamp(0.9rem, 3vw, 1.6rem);
     margin-top: .8rem;
 }
 
@@ -176,7 +176,7 @@ nav {
 }
 
 .social-icon {
-    width: clamp(45px, 7vw, 65px);
+    width: clamp(35px, 7vw, 55px);
     transition: .25s ease;
 }
 
