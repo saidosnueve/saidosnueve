@@ -6,6 +6,12 @@
     padding: 0;
 }
 
+/* SCROLL */
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* BACKGROUND */
 
 body {
